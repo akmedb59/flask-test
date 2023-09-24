@@ -102,7 +102,7 @@ def buy():
             return apology("SORRY you're out of money")
 
         already_purchased = userdbcon.execute("SELECT symbol FROM dashboard")
-        print(already_purchased)
+        # print(already_purchased)
         # print(already_purchased.values())
         for dict in already_purchased:
             if (
@@ -114,7 +114,7 @@ def buy():
                     noFShares,
                     request.form.get("symbol").upper(),
                 )
-                print("WOrked")
+                # print("WOrked")
                 break
         else:
             userdbcon.execute(
@@ -123,7 +123,7 @@ def buy():
                 quoted["name"],
                 noFShares,
             )
-            print("ISSUE")
+            # print("ISSUE")
 
         userdbcon.execute(
             "INSERT INTO history (symbol, name, shares, price, date) VALUES (?,?,?,?,?)",
@@ -152,7 +152,7 @@ def history():
     # //////////////////////////////////////////////////////////////
 
     htable = userdbcon.execute("SELECT * FROM history")
-    print(htable)
+    # print(htable)
     return render_template("history.html", history=htable)
 
 
